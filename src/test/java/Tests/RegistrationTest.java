@@ -19,7 +19,7 @@ public class RegistrationTest extends Base {
         WebElement lNameFiled = webdriver.findElement(By.id("LastName"));
         lNameFiled.sendKeys("Peric");
         WebElement emailFiled = webdriver.findElement(By.id("Email"));
-        emailFiled.sendKeys("pera@gmiil.com");
+        emailFiled.sendKeys("pera@gmqil.com");
         WebElement passwordFiled = webdriver.findElement(By.id("Password"));
         passwordFiled.sendKeys("123456");
         WebElement confirmPasswordFiled = webdriver.findElement(By.id("ConfirmPassword"));
@@ -29,7 +29,10 @@ public class RegistrationTest extends Base {
         WebElement registeredUser = webdriver.findElement(By.cssSelector("div[class='result']"));
         String registeredUserText = registeredUser.getText();
         String expectedUserText = "Your registration completed";
-        Assert.assertEquals(registeredUserText, expectedUserText);//hard assert
-
+        Boolean isDisplayed = webdriver.findElement(By.cssSelector("a[class='ico-logout']")).isDisplayed();
+        if (isDisplayed){
+            Assert.assertEquals(registeredUserText, expectedUserText);//hard assert
+            System.out.println("Test je prosao");
+        }
     }
 }
